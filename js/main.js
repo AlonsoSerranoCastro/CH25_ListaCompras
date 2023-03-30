@@ -135,7 +135,6 @@ window.addEventListener("load",function(event){
         localStorage.setItem("costoTotal","0.0");
     };// if
 
-
     contador = parseInt(localStorage.getItem("contadorProductos"));
     totalEnProductos = parseInt(localStorage.getItem("totalEnProductos"));
     costoTotal = parseFloat(localStorage.getItem("costoTotal"));
