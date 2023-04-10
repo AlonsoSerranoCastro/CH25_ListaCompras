@@ -258,6 +258,8 @@ getProducto()
             .then((prod)=> console.log(prod))
             .catch((err)=> console.log(err.message));  */
 
+
+
 let cardimgtop = document.getElementsByClassName("card");
 let cardtitle = document.getElementsByClassName("card-title");
 let cardtext = document.getElementsByClassName("card-text");
@@ -274,3 +276,27 @@ cardtitle[x].insertAdjacentHTML("beforeend", titulo);
 texto = producto[x].description;
 cardtext[x].insertAdjacentHTML("beforeend", texto);
 }
+
+function getProducto(){
+   let promesa = fetch("https://fakestoreapi.com/products",{
+      method: "GET"
+   });
+
+   promesa.then( (response) => {
+      response.json().then( (prods)=>{
+         createCards(prods);
+         console.log("prods=>json()");
+         console.log(prods);
+      }//prods
+      )//then json
+      .catch((err)=>{
+         console.error("Error en el formato de la respuesta: " + err.message);
+      })//catch json
+   }//response
+   )//then
+   .catch((error)=>{
+      console.error("Error en la respuesta" + error.message);
+   })//catch promesa
+}//getProducto
+
+getProducto()
